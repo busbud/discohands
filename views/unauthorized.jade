@@ -2,4 +2,11 @@ extends _base
 
 block body
   .container
-    p Unauthorized
+    p
+    .panel.panel-danger
+      .panel-heading Unauthorized
+      .panel-body
+        .alert.alert-danger
+          b Sorry,
+          = ' '
+          | you are not authorized to access this.
