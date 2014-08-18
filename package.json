@@ -15,5 +15,19 @@
   "bugs": {
     "url": "https://github.com/busbud/discohands/issues"
   },
-  "homepage": "https://github.com/busbud/discohands"
+  "homepage": "https://github.com/busbud/discohands",
+  "dependencies": {
+    "body-parser": "^1.6.5",
+    "compression": "^1.0.11",
+    "connect-redis": "^2.0.0",
+    "errorhandler": "^1.1.1",
+    "express": "^4.8.4",
+    "express-session": "^1.7.6",
+    "jade": "^1.5.0",
+    "lodash": "^2.4.1",
+    "mongoose": "^3.8.15",
+    "morgan": "^1.2.3",
+    "redis": "^0.12.1",
+    "superagent": "^0.18.2"
+  }
 }
