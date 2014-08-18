@@ -5,4 +5,8 @@ block variables
   - page_active = 'topics'
 
 block content
-  p Topics
+  h1 Topics
+    .pull-right
+      a.btn.btn-success(href='/topics/new')
+        i.fa.fa-plus
+        = ' New Topic'
