@@ -10,6 +10,7 @@ var session      = require('express-session');
 var RedisStore   = require('connect-redis')(session);
 
 var redis  = require('./lib/redis');
+var mongo  = require('./lib/mongo');
 var routes = require('./routes');
 
 if (fs.existsSync('locals.json')) {
@@ -44,6 +45,8 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(errorHandler());
 }
 
-var server = app.listen(process.env.PORT || 8080, function() {
-  console.log('listening on port %d', server.address().port);
+mongo(function() {
+  var server = app.listen(process.env.PORT || 8080, function() {
+    console.log('listening on port %d', server.address().port);
+  });
 });
