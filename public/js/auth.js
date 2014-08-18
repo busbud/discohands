@@ -22,7 +22,7 @@ $(function() {
     },
     onlogout: function() {
       $.post('/auth/logout', function() {
-        window.location.reload();
+        window.location.href = '/';
       });
     }
   });

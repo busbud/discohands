@@ -1,0 +1,28 @@
+extends _base
+
+block body
+  nav.navbar.navbar-default.navbar-static-top
+    .container-fluid
+      .navbar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='/') Discohands
+
+      .collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li(class=(page_active === 'topics' ? 'active' : ''))
+            a(href='/') Topics
+          li(class=(page_active === 'discussed' ? 'active' : ''))
+            a(href='/discussed') Discussed
+
+        .navbar-right
+          p.navbar-text
+            = session.user.email
+          button#signout.btn.btn-default.navbar-btn(type='button')
+            i.fa.fa-sign-out
+            = ' Sign out'
+
+  .container
+    block content

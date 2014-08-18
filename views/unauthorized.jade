@@ -1,12 +1,15 @@
 extends _base
 
+block variables
+  - page_title = 'Unauthorized'
+
 block body
   .container
     p
-    .panel.panel-danger
-      .panel-heading Unauthorized
-      .panel-body
-        .alert.alert-danger
-          b Sorry,
-          = ' '
-          | you are not authorized to access this.
+    .alert.alert-danger
+      b Unauthorized!
+      = ' '
+      | You are not authorized to access this. Try
+      = ' '
+      a#signin.alert-link(href='/') signing in
+      | .
