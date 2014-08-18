@@ -1,0 +1,19 @@
+{
+  "name": "discohands",
+  "version": "0.0.0",
+  "description": "Democratically choose topics to discuss",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/busbud/discohands"
+  },
+  "author": "Busbud",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/busbud/discohands/issues"
+  },
+  "homepage": "https://github.com/busbud/discohands"
+}
