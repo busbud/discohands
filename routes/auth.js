@@ -19,8 +19,13 @@ router.post('/login', function(req, res, next) {
       if (err) return next(err);
 
       var verification = vres.body;
-      if (verification.status != 'okay') {
+      if (verification.status !== 'okay') {
         return res.status(403).send('Assertion verification failed');
+      }
+
+      var email_domain = verification.email.split('@')[1].toLowerCase();
+      if (email_domain !== process.env.AUTHORIZED_DOMAIN) {
+        return res.status(403).send('Domain not authorized');
       }
 
       req.session.user = { email: verification.email };

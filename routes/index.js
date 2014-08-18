@@ -7,8 +7,11 @@ var router = express.Router();
 router.use('/auth', authRoutes);
 
 router.get('/', function(req, res) {
-  console.log(req.session);
   res.render('login');
+});
+
+router.get('/unauthorized', function(req, res) {
+  res.render('unauthorized');
 });
 
 module.exports = router;

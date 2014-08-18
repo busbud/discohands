@@ -17,7 +17,7 @@ $(function() {
       }, function() {
         window.location.reload();
       }).fail(function() {
-        navigator.id.logout();
+        window.location.href = '/unauthorized';
       });
     },
     onlogout: function() {
