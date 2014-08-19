@@ -1,5 +1,6 @@
 extends _layout
 include _topic
+include _pager
 
 block variables
   - page_title = 'Topics'
@@ -14,5 +15,14 @@ block content
       a.btn.btn-success.pull-right(href='/topics/new')
         i.fa.fa-plus
         = ' New Topic'
-  each topic in topics
-    +topic(topic)
+  if topics.length
+    each topic in topics
+      +topic(topic)
+    if pages > 1
+      +pager('/topics', page, pages)
+  else
+    .alert.alert-warning
+      strong There's nothing here!
+      = ' Add some '
+      a.alert-link(href='/topics/new') topics
+      = ' first.'

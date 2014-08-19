@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/busbud/discohands",
   "dependencies": {
+    "async": "^0.9.0",
     "body-parser": "^1.6.5",
     "compression": "^1.0.11",
     "connect-redis": "^2.0.0",

@@ -4,18 +4,25 @@ var Topic = require('../models/topic');
 
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-  // TODO: Pagination
-  Topic
-    .find({ discussed: true })
-    .sort('-date')
-    .limit(10)
-    .exec(function(err, topics) {
-      if (err) return next(err);
-      res.render('discussed', {
-        topics: topics
-      });
+function getTopics(req, res, next) {
+  var page = +req.params.page || 1;
+
+  Topic.getPage({
+    where: { discussed: true },
+    sort: '-date',
+    limit: 10,
+    page: page
+  }, function(err, topics, pages) {
+    if (err) return next(err);
+    res.render('discussed', {
+      topics: topics,
+      page: page,
+      pages: pages
     });
-});
+  });
+}
+
+router.get('/', getTopics);
+router.get('/page/:page', getTopics);
 
 module.exports = router;

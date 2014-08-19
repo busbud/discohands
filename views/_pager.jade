@@ -1,0 +1,18 @@
+mixin pager(prefix, page, pages)
+  ul.pager
+    if page === 1
+      li.previous.disabled
+        a
+          i.fa.fa-chevron-left
+    else
+      li.previous
+        a(href=prefix + '/page/' + (page - 1))
+          i.fa.fa-chevron-left
+    if page === pages
+      li.next.disabled
+        a
+          i.fa.fa-chevron-right
+    else
+      li.next
+        a(href=prefix + '/page/' + (page + 1))
+          i.fa.fa-chevron-right
