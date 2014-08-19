@@ -1,0 +1,22 @@
+mixin topic(topic)
+  - var upvoted = (topic.votes.indexOf(session.user.email) !== -1)
+
+  .well.well-sm.topic(data-topic-id=topic.id)
+    .row
+      .col-sm-1.col-xs-2.text-center
+        button.upvote.btn.btn-default.btn-sm(type='button', title='Upvote', class=(upvoted ? 'active' : ''))
+          i.fa.fa-caret-up
+        br
+        small.score.text-muted= topic.score
+      .col-sm-11.col-xs-10
+        h4= topic.title
+        p= topic.description
+    .row
+      .col-sm-1.col-xs-2.text-center
+        button.discussed.btn.btn-default.btn-xs(type='button', title='Mark as discussed', class=(topic.discussed ? 'active' : ''))
+          i.fa.fa-check
+      .col-sm-11.col-xs-10
+        small.text-muted
+          | Added
+          span(title=moment(topic.date).format('LLL'))
+            = ' ' + moment(topic.date).fromNow()

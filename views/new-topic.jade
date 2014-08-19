@@ -1,0 +1,26 @@
+extends _layout
+
+block variables
+  - page_title = 'New Topic'
+  - page_active = 'topics'
+
+block scripts
+  script(src='/js/new-topic.js')
+
+block content
+  .page-header
+    h1 New Topic
+      a.btn.btn-default.pull-right(href='/')
+        i.fa.fa-caret-left
+        = ' Topics'
+
+  form.form-horizontal(method='post')
+    .form-group
+      .col-md-8.col-md-offset-2
+        input#title.form-control.input-lg(type='text', name='title', placeholder='Topic Title')
+    .form-group
+      .col-md-8.col-md-offset-2
+        textarea#description.form-control(rows='3', name='description', placeholder='Description...')
+    .form-group
+      .col-md-8.col-md-offset-2
+        button#submit.btn.btn-primary.btn-lg(type='submit') Create

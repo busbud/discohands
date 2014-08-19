@@ -1,6 +1,7 @@
 var fs = require('fs');
 
 var _            = require('lodash');
+var moment       = require('moment');
 var express      = require('express');
 var morgan       = require('morgan');
 var bodyParser   = require('body-parser');
@@ -20,6 +21,8 @@ if (fs.existsSync('locals.json')) {
 var app = express();
 
 app.set('view engine', 'jade');
+
+app.locals.moment = moment;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));

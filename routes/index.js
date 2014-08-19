@@ -1,14 +1,15 @@
 var express = require('express');
 
-var authRoutes = require('./auth');
+var authRoutes  = require('./auth');
+var topicRoutes = require('./topics');
 
 var router = express.Router();
 
 router.use('/auth', authRoutes);
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
   if (req.session.user) {
-    res.render('topics');
+    topicRoutes(req, res, next);
   } else {
     res.render('login');
   }
@@ -30,9 +31,7 @@ router.use(function(req, res, next) {
   next();
 });
 
-router.get('/topics', function(req, res) {
-  res.render('topics');
-});
+router.use('/topics', topicRoutes);
 
 router.get('/discussed', function(req, res) {
   res.render('discussed');

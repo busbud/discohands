@@ -1,12 +1,18 @@
 extends _layout
+include _topic
 
 block variables
   - page_title = 'Topics'
   - page_active = 'topics'
 
+block scripts
+  script(src='/js/topics.js')
+
 block content
-  h1 Topics
-    .pull-right
-      a.btn.btn-success(href='/topics/new')
+  .page-header
+    h1 Topics
+      a.btn.btn-success.pull-right(href='/topics/new')
         i.fa.fa-plus
         = ' New Topic'
+  each topic in topics
+    +topic(topic)
