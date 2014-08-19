@@ -10,13 +10,14 @@ var errorHandler = require('errorhandler');
 var session      = require('express-session');
 var RedisStore   = require('connect-redis')(session);
 
-var redis  = require('./lib/redis');
-var mongo  = require('./lib/mongo');
-var routes = require('./routes');
-
 if (fs.existsSync('locals.json')) {
   _.assign(process.env, JSON.parse(fs.readFileSync('locals.json')));
 }
+
+var redis    = require('./lib/redis');
+var mongo    = require('./lib/mongo');
+var passport = require('./lib/passport');
+var routes   = require('./routes');
 
 var app = express();
 
@@ -35,10 +36,13 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Expose session to views
+// Expose session and user to views
 app.use(function(req, res, next) {
   res.locals.session = req.session;
+  res.locals.user    = req.user;
   next();
 });
 

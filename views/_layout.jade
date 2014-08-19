@@ -17,9 +17,9 @@ block body
           li(class=(page_active === 'discussed' ? 'active' : ''))
             a(href='/discussed') Discussed
 
-        p.navbar-text.navbar-right
-          = session.user.email
-        button#signout.btn.btn-default.navbar-btn.navbar-right(type='button')
+        p.navbar-text.navbar-right(title=user.email)
+          = user.display_name
+        a.btn.btn-default.navbar-btn.navbar-right(href='/auth/logout')
           i.fa.fa-sign-out
           = ' Sign out'
 

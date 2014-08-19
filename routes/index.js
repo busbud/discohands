@@ -9,7 +9,7 @@ var router = express.Router();
 router.use('/auth', authRoutes);
 
 router.get('/', function(req, res, next) {
-  if (req.session.user) {
+  if (req.user) {
     topicRoutes(req, res, next);
   } else {
     res.render('login');
@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/unauthorized', function(req, res) {
-  if (req.session.user) {
+  if (req.user) {
     res.redirect('/');
   } else {
     res.render('unauthorized');
@@ -26,7 +26,7 @@ router.get('/unauthorized', function(req, res) {
 
 // All other routes require auth
 router.use(function(req, res, next) {
-  if (!req.session.user) {
+  if (!req.user) {
     return res.render('unauthorized');
   }
   next();

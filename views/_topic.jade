@@ -1,5 +1,5 @@
 mixin topic(topic)
-  - var upvoted = (topic.votes.indexOf(session.user.email) !== -1)
+  - var upvoted = (topic.votes.indexOf(user.email) !== -1)
 
   .well.well-sm.topic(data-topic-id=topic.id)
     .row

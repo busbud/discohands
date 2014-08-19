@@ -41,9 +41,9 @@ router.post('/new', function(req, res, next) {
   var topic = new Topic({
     title: req.body.title,
     description: req.body.description,
-    email: req.session.user.email,
+    email: req.user.email,
     score: 1,
-    votes: [ req.session.user.email ]
+    votes: [ req.user.email ]
   });
   topic.save(function(err) {
     if (err) return next(err);
@@ -52,7 +52,7 @@ router.post('/new', function(req, res, next) {
 });
 
 router.post('/:id/vote', function(req, res, next) {
-  Topic.vote(req.params.id, req.session.user.email, function(err, topic) {
+  Topic.vote(req.params.id, req.user.email, function(err, topic) {
     if (err) return next(err);
     if (topic) {
       res.status(200).send('Voted');
@@ -63,7 +63,7 @@ router.post('/:id/vote', function(req, res, next) {
 });
 
 router.post('/:id/unvote', function(req, res, next) {
-  Topic.unvote(req.params.id, req.session.user.email, function(err, topic) {
+  Topic.unvote(req.params.id, req.user.email, function(err, topic) {
     if (err) return next(err);
     if (topic) {
       res.status(200).send('Unvoted');
