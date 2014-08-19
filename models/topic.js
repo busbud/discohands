@@ -2,13 +2,14 @@ var async    = require('async');
 var mongoose = require('mongoose');
 
 var topic_schema = mongoose.Schema({
-  title:       String,
-  description: String,
-  email:       String,
-  date:        { type: Date, default: Date.now },
-  score:       Number,
-  votes:       [ String ],
-  discussed:   { type: Boolean, default: false }
+  title:          String,
+  description:    String,
+  email:          String,
+  date:           { type: Date, default: Date.now },
+  score:          Number,
+  votes:          [ String ],
+  discussed:      { type: Boolean, default: false },
+  discussed_date: Date
 });
 
 topic_schema.statics.getPage = function(args, done) {
@@ -55,7 +56,10 @@ topic_schema.statics.discuss = function(id, done) {
     _id: id,
     discussed: false
   }, {
-    $set: { discussed: true }
+    $set: {
+      discussed: true,
+      discussed_date: Date.now()
+    }
   }, done);
 };
 

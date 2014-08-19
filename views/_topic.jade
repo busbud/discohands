@@ -17,6 +17,13 @@ mixin topic(topic)
           i.fa.fa-check
       .col-sm-11.col-xs-10
         small.text-muted
-          | Added
-          span(title=moment(topic.date).format('LLL'))
-            = ' ' + moment(topic.date).fromNow()
+          ul.list-inline
+            li
+              = 'Added '
+              span(title=moment(topic.date).format('LLLL'))
+                = moment(topic.date).fromNow()
+            if topic.discussed && topic.discussed_date
+              li
+                = 'Discussed '
+                span(title=moment(topic.discussed_date).format('LLLL'))
+                  = moment(topic.discussed_date).fromNow()

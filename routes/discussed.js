@@ -9,7 +9,7 @@ function getTopics(req, res, next) {
 
   Topic.getPage({
     where: { discussed: true },
-    sort: '-date',
+    sort: '-discussed_date -date',
     limit: 10,
     page: page
   }, function(err, topics, pages) {
