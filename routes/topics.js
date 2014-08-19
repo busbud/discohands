@@ -51,66 +51,47 @@ router.post('/new', function(req, res, next) {
   });
 });
 
-router.post('/:id/upvote', function(req, res, next) {
-  // Try to un-upvote first, upvote if no match
-  Topic.findOneAndUpdate({
-    _id: req.params.id,
-    votes: req.session.user.email
-  }, {
-    $inc: { score: -1 },
-    $pull: { votes: req.session.user.email }
-  }, function(err, topic) {
+router.post('/:id/vote', function(req, res, next) {
+  Topic.vote(req.params.id, req.session.user.email, function(err, topic) {
     if (err) return next(err);
     if (topic) {
-      return res.status(200).send('Upvote removed');
+      res.status(200).send('Voted');
+    } else {
+      res.status(400).send('Invalid topic');
     }
-
-    Topic.findOneAndUpdate({
-      _id: req.params.id,
-      votes: { $ne: req.session.user.email }
-    }, {
-      $inc: { score: 1 },
-      $push: { votes: req.session.user.email }
-    }, function(err, topic) {
-      if (err) return next(err);
-
-      if (topic) {
-        res.status(200).send('Upvoted');
-      } else {
-        res.status(404).send('Topic not found');
-      }
-    });
   });
 });
 
-router.post('/:id/discussed', function(req, res, next) {
-  // Try to un-discuss first, discuss if no match
-  Topic.findOneAndUpdate({
-    _id: req.params.id,
-    discussed: true
-  }, {
-    $set: { discussed: false }
-  }, function(err, topic) {
+router.post('/:id/unvote', function(req, res, next) {
+  Topic.unvote(req.params.id, req.session.user.email, function(err, topic) {
     if (err) return next(err);
-
     if (topic) {
-      return res.status(200).send('Unmarked discussed');
+      res.status(200).send('Unvoted');
+    } else {
+      res.status(400).send('Invalid topic');
     }
+  });
+});
 
-    Topic.findOneAndUpdate({
-      _id: req.params.id,
-      discussed: false
-    }, {
-      $set: { discussed: true }
-    }, function(err, topic) {
-      if (err) return next(err);
+router.post('/:id/discuss', function(req, res, next) {
+  Topic.discuss(req.params.id, function(err, topic) {
+    if (err) return next(err);
+    if (topic) {
+      res.status(200).send('Discussed');
+    } else {
+      res.status(400).send('Invalid topic');
+    }
+  });
+});
 
-      if (topic) {
-        res.status(200).send('Marked discussed');
-      } else {
-        res.status(404).send('Topic not found');
-      }
-    });
+router.post('/:id/undiscuss', function(req, res, next) {
+  Topic.undiscuss(req.params.id, function(err, topic) {
+    if (err) return next(err);
+    if (topic) {
+      res.status(200).send('Undiscussed');
+    } else {
+      res.status(400).send('Invalid topic');
+    }
   });
 });
 
