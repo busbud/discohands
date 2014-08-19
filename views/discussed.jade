@@ -1,8 +1,15 @@
 extends _layout
+include _topic
 
 block variables
   - page_title = 'Discussed'
   - page_active = 'discussed'
 
+block scripts
+  script(src='/js/topics.js')
+
 block content
-  p Discussed
+  .page-header
+    h1 Discussed
+  each topic in topics
+    +topic(topic)

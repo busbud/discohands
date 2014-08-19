@@ -54,26 +54,56 @@ router.post('/:id/upvote', function(req, res, next) {
     $pull: { votes: req.session.user.email }
   }, function(err, topic) {
     if (err) return next(err);
+    if (topic) {
+      return res.status(200).send('Upvote removed');
+    }
+
+    Topic.findOneAndUpdate({
+      _id: req.params.id,
+      votes: { $ne: req.session.user.email }
+    }, {
+      $inc: { score: 1 },
+      $push: { votes: req.session.user.email }
+    }, function(err, topic) {
+      if (err) return next(err);
+
+      if (topic) {
+        res.status(200).send('Upvoted');
+      } else {
+        res.status(404).send('Topic not found');
+      }
+    });
+  });
+});
+
+router.post('/:id/discussed', function(req, res, next) {
+  // Try to un-discuss first, discuss if no match
+  Topic.findOneAndUpdate({
+    _id: req.params.id,
+    discussed: true
+  }, {
+    $set: { discussed: false }
+  }, function(err, topic) {
+    if (err) return next(err);
 
     if (topic) {
-      res.status(200).send('Upvote removed');
-    } else {
-      Topic.findOneAndUpdate({
-        _id: req.params.id,
-        votes: { $ne: req.session.user.email }
-      }, {
-        $inc: { score: 1 },
-        $push: { votes: req.session.user.email }
-      }, function(err, topic) {
-        if (err) return next(err);
-
-        if (topic) {
-          res.status(200).send('Upvoted');
-        } else {
-          res.status(404).send('Topic not found');
-        }
-      });
+      return res.status(200).send('Unmarked discussed');
     }
+
+    Topic.findOneAndUpdate({
+      _id: req.params.id,
+      discussed: false
+    }, {
+      $set: { discussed: true }
+    }, function(err, topic) {
+      if (err) return next(err);
+
+      if (topic) {
+        res.status(200).send('Marked discussed');
+      } else {
+        res.status(404).send('Topic not found');
+      }
+    });
   });
 });
 

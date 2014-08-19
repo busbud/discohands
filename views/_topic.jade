@@ -4,7 +4,7 @@ mixin topic(topic)
   .well.well-sm.topic(data-topic-id=topic.id)
     .row
       .col-sm-1.col-xs-2.text-center
-        button.upvote.btn.btn-default.btn-sm(type='button', title='Upvote', class=(upvoted ? 'active' : ''))
+        button.upvote.btn.btn-default.btn-sm(type='button', title='Upvote', class=(upvoted ? 'active' : '') + ' ' + (topic.discussed ? 'disabled' : ''))
           i.fa.fa-caret-up
         br
         small.score.text-muted= topic.score
@@ -13,7 +13,7 @@ mixin topic(topic)
         p= topic.description
     .row
       .col-sm-1.col-xs-2.text-center
-        button.discussed.btn.btn-default.btn-xs(type='button', title='Mark as discussed', class=(topic.discussed ? 'active' : ''))
+        button.discussed.btn.btn-xs(type='button', title='Mark as discussed', class=(topic.discussed ? 'active btn-info' : 'btn-default'))
           i.fa.fa-check
       .col-sm-11.col-xs-10
         small.text-muted

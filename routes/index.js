@@ -1,7 +1,8 @@
 var express = require('express');
 
-var authRoutes  = require('./auth');
-var topicRoutes = require('./topics');
+var authRoutes      = require('./auth');
+var topicRoutes     = require('./topics');
+var discussedRoutes = require('./discussed');
 
 var router = express.Router();
 
@@ -32,9 +33,6 @@ router.use(function(req, res, next) {
 });
 
 router.use('/topics', topicRoutes);
-
-router.get('/discussed', function(req, res) {
-  res.render('discussed');
-});
+router.use('/discussed', discussedRoutes);
 
 module.exports = router;
