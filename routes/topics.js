@@ -30,12 +30,15 @@ router.get('/new', function(req, res) {
 });
 
 router.post('/new', function(req, res, next) {
-  // TODO: Better error reporting
   if (!req.body.title || req.body.title.length > 255) {
-    return res.status(400).send('Title missing or too long');
+    return res.status(400).render('error', {
+      message: 'Title missing or too long.'
+    });
   }
   if (req.body.description && req.body.description.length > 1024) {
-    return res.status(400).send('Description too long');
+    return res.status(400).render('error', {
+      message: 'Description too long.'
+    });
   }
 
   var topic = new Topic({
