@@ -10,8 +10,9 @@ var errorHandler = require('errorhandler');
 var session      = require('express-session');
 var RedisStore   = require('connect-redis')(session);
 
-if (fs.existsSync('config.json')) {
-  _.defaults(process.env, JSON.parse(fs.readFileSync('config.json')));
+var config_path = __dirname + '/config.json';
+if (fs.existsSync(config_path)) {
+  _.defaults(process.env, JSON.parse(fs.readFileSync(config_path)));
 }
 
 var redis    = require('./lib/redis');
