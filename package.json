@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git://github.com/busbud/discohands"
   },
-  "author": "Busbud",
-  "license": "ISC",
+  "author": "Busbud, Inc.",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/busbud/discohands/issues"
   },
