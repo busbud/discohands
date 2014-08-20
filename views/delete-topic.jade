@@ -1,0 +1,18 @@
+extends _layout
+include _topic-form
+
+block variables
+  - page_title = 'Delete Topic'
+  - page_active = 'mine'
+
+block scripts
+  script(src='/js/topics.js')
+
+block content
+  .page-header
+    h1 Delete Topic
+      a.btn.btn-default.pull-right(href='/mine')
+        i.fa.fa-caret-left
+        = ' My Topics'
+
+  +topic_form(topic.title, topic.description, true, 'Delete', 'btn-danger')

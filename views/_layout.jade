@@ -17,11 +17,12 @@ block body
           li(class=(page_active === 'discussed' ? 'active' : ''))
             a(href='/discussed') Discussed
 
-        p.navbar-text.navbar-right(title=user.email)
-          = user.display_name
-        a.btn.btn-default.navbar-btn.navbar-right(href='/auth/logout')
-          i.fa.fa-sign-out
-          = ' Sign out'
+        ul.nav.navbar-nav.navbar-right
+          li(class=(page_active === 'mine' ? 'active' : ''))
+            a(href='/mine', title=user.email)= user.display_name
+          li
+            a(href='/auth/logout', title='Sign out')
+              i.fa.fa-sign-out
 
   .container
     block content

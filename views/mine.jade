@@ -1,0 +1,28 @@
+extends _layout
+include _topic
+include _pager
+
+block variables
+  - page_title = 'My Topics'
+  - page_active = 'mine'
+
+block scripts
+  script(src='/js/topics.js')
+
+block content
+  .page-header
+    h1 My Topics
+      a.btn.btn-success.pull-right(href='/topics/new')
+        i.fa.fa-plus
+        = ' New Topic'
+  if topics.length
+    each topic in topics
+      +topic(topic, true)
+    if pages > 1
+      +pager('/mine', page, pages)
+  else
+    .alert.alert-warning
+      strong There's nothing here!
+      = ' Add some '
+      a.alert-link(href='/topics/new') topics
+      = ' first.'

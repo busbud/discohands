@@ -1,4 +1,4 @@
-mixin topic(topic)
+mixin topic(topic, editable)
   - var upvoted = (topic.votes.indexOf(user.email) !== -1)
 
   .well.well-sm.topic(data-topic-id=topic.id)
@@ -27,3 +27,8 @@ mixin topic(topic)
                 = 'Discussed '
                 span(title=moment(topic.discussed_date).format('LLLL'))
                   = moment(topic.discussed_date).fromNow()
+            if editable && topic.email === user.email && !topic.discussed
+              li
+                a(href='/mine/' + topic.id + '/edit') Edit
+              li
+                a(href='/mine/' + topic.id + '/delete') Delete
