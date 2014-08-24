@@ -2,14 +2,15 @@ var async    = require('async');
 var mongoose = require('mongoose');
 
 var topic_schema = mongoose.Schema({
-  title:          String,
-  description:    String,
-  email:          String,
-  date:           { type: Date, default: Date.now },
-  score:          Number,
-  votes:          [ String ],
-  discussed:      { type: Boolean, default: false },
-  discussed_date: Date
+  title:           String,
+  description:     String,
+  email:           String,
+  date:            { type: Date, default: Date.now },
+  score:           Number,
+  votes:           [ String ],
+  discussed:       { type: Boolean, default: false },
+  discussed_date:  Date,
+  discussed_email: String
 });
 
 topic_schema.statics.getPage = function(args, done) {
@@ -51,24 +52,29 @@ topic_schema.statics.unvote = function(id, email, done) {
   }, done);
 };
 
-topic_schema.statics.discuss = function(id, done) {
+topic_schema.statics.discuss = function(id, email, done) {
   this.findOneAndUpdate({
-    _id: id,
+    _id:       id,
     discussed: false
   }, {
     $set: {
-      discussed: true,
-      discussed_date: Date.now()
+      discussed:       true,
+      discussed_date:  Date.now(),
+      discussed_email: email
     }
   }, done);
 };
 
-topic_schema.statics.undiscuss = function(id, done) {
+topic_schema.statics.undiscuss = function(id, email, done) {
   this.findOneAndUpdate({
-    _id: id,
+    _id:       id,
     discussed: true
   }, {
-    $set: { discussed: false }
+    $set: {
+      discussed:       false,
+      discussed_date:  Date.now(),
+      discussed_email: email
+    }
   }, done);
 };
 

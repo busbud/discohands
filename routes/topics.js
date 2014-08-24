@@ -77,7 +77,7 @@ router.post('/:id/unvote', function(req, res, next) {
 });
 
 router.post('/:id/discuss', function(req, res, next) {
-  Topic.discuss(req.params.id, function(err, topic) {
+  Topic.discuss(req.params.id, req.user.email, function(err, topic) {
     if (err) return next(err);
     if (topic) {
       res.status(200).send('Discussed');
@@ -88,7 +88,7 @@ router.post('/:id/discuss', function(req, res, next) {
 });
 
 router.post('/:id/undiscuss', function(req, res, next) {
-  Topic.undiscuss(req.params.id, function(err, topic) {
+  Topic.undiscuss(req.params.id, req.user.email, function(err, topic) {
     if (err) return next(err);
     if (topic) {
       res.status(200).send('Undiscussed');
