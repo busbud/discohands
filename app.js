@@ -2,6 +2,7 @@ var fs = require('fs');
 
 var _            = require('lodash');
 var moment       = require('moment');
+var marked       = require('marked');
 var express      = require('express');
 var morgan       = require('morgan');
 var bodyParser   = require('body-parser');
@@ -25,6 +26,11 @@ var app = express();
 app.set('view engine', 'jade');
 
 app.locals.moment = moment;
+
+marked.setOptions({
+  sanitize: true
+});
+app.locals.marked = marked;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
