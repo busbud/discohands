@@ -22,6 +22,8 @@ mixin topic(topic, editable)
               = 'Added '
               span(title=moment(topic.date).format('LLLL'))
                 = moment(topic.date).fromNow()
+              = ' by '
+              = faker.name.findName()
             if topic.discussed && topic.discussed_date
               li
                 = 'Discussed '

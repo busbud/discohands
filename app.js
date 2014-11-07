@@ -3,6 +3,7 @@ var fs = require('fs');
 var _            = require('lodash');
 var moment       = require('moment');
 var marked       = require('marked');
+var faker        = require('faker');
 var express      = require('express');
 var morgan       = require('morgan');
 var bodyParser   = require('body-parser');
@@ -26,6 +27,7 @@ var app = express();
 app.set('view engine', 'jade');
 
 app.locals.moment = moment;
+app.locals.faker  = faker;
 
 marked.setOptions({
   sanitize: true

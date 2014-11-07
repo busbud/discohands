@@ -24,6 +24,7 @@
     "errorhandler": "^1.1.1",
     "express": "^4.8.4",
     "express-session": "^1.7.6",
+    "faker": "^2.0.1",
     "jade": "^1.5.0",
     "lodash": "^2.4.1",
     "marked": "^0.3.2",
