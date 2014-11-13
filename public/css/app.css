@@ -61,6 +61,10 @@ nav.navbar.navbar-default li.active>a:hover {
   background: #fff;
   box-shadow: 0 1px 3px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.05);
 }
+.topic .upvote.active {
+  background: #efefef;
+  box-shadow: inset 1px 2px 2px rgba(0,0,0,.05);
+}
 
 /* Topic form */
 form.form-horizontal {
