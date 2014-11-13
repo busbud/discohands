@@ -31,6 +31,17 @@ nav.navbar.navbar-default li.active>a:hover {
   color: #fff;
   background: #1b94eb;
 }
+/* Header mobile adjustments */
+nav.navbar.navbar-default .navbar-toggle:focus,
+nav.navbar.navbar-default .navbar-toggle:hover {
+  background: #1b94eb;
+}
+nav.navbar.navbar-default .navbar-toggle .icon-bar {
+  background: #fff;
+}
+nav.navbar .navbar-collapse {
+  border-top: none;
+}
 
 /* Login page */
 .container .jumbotron {
