@@ -65,6 +65,17 @@ nav.navbar.navbar-default li.active>a:hover {
   background: #efefef;
   box-shadow: inset 1px 2px 2px rgba(0,0,0,.05);
 }
+.topic h4 small a {
+  color: #fff;
+  transition: color 300ms;
+}
+.topic:hover h4 small a {
+  color: #efefef;
+}
+.topic h4 small a:hover {
+  color: #ddd;
+  text-decoration: none;
+}
 
 /* Topic form */
 form.form-horizontal {
