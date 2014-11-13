@@ -1,0 +1,82 @@
+html, body {
+  background: #fafafa;
+}
+
+.btn {
+  border: none;
+  border-radius: 2px;
+}
+.btn.btn-default {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.05);
+}
+
+/* Header */
+nav.navbar.navbar-default {
+  background-color: #127ccb;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,.2);
+}
+nav.navbar.navbar-default a {
+  color: #fff;
+  padding: 15px;
+  transition: padding 150ms, background 300ms;
+}
+nav.navbar.navbar-default a:hover {
+  padding: 16px 15px 14px;
+}
+nav.navbar.navbar-default a:hover,
+nav.navbar.navbar-default li.active>a,
+nav.navbar.navbar-default li.active>a:hover {
+  color: #fff;
+  background: #1b94eb;
+}
+
+/* Login page */
+.container .jumbotron {
+  border-radius: 4px;
+  margin: 100px 0 30px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.05);
+}
+.jumbotron h1 {
+  font-size: 42px;
+  font-weight: 300;
+}
+.jumbotron .btn.btn-primary {
+  border-radius: 2px;
+  border: none;
+  border-top: 1px solid #1e84d1;
+  background: #155a8e;
+}
+
+/* Content */
+.page-header h1 {
+  font-weight: 300;
+  font-size: 32px;
+}
+.topic {
+  border: none;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.05);
+}
+.topic .upvote.active {
+  background: #efefef;
+  box-shadow: inset 1px 2px 2px rgba(0,0,0,.05);
+}
+
+/* Topic form */
+form.form-horizontal {
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.05);
+  padding: 20px;
+}
+form.form-horizontal .form-group:last-child {
+  margin-bottom: 0;
+}
+form.form-horizontal input, form.form-horizontal textarea {
+  border-radius: 2px;
+  box-shadow: none;
+}
