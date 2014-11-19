@@ -27,18 +27,20 @@ $(function() {
     var topic_id = $topic.data('topic-id');
 
     if ($this.hasClass('active')) {
+      if (!confirm('Unmark this topic as discussed?')) return;
       $.post('/topics/' + topic_id + '/undiscuss', function() {
         $this.removeClass('active btn-info').addClass('btn-default');
         $upvote.removeClass('disabled');
       });
     } else {
+      if (!confirm('Mark this topic as discussed?')) return;
       $.post('/topics/' + topic_id + '/discuss', function() {
         $this.addClass('active btn-info').removeClass('btn-default');
         $upvote.addClass('disabled');
       });
     }
 
-    $this.blur();
+    document.location.reload();
   });
 
   $('#submit').click(function(e) {
