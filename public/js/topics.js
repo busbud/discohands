@@ -31,16 +31,16 @@ $(function() {
       $.post('/topics/' + topic_id + '/undiscuss', function() {
         $this.removeClass('active btn-info').addClass('btn-default');
         $upvote.removeClass('disabled');
+        document.location.reload();
       });
     } else {
       if (!confirm('Mark this topic as discussed?')) return;
       $.post('/topics/' + topic_id + '/discuss', function() {
         $this.addClass('active btn-info').removeClass('btn-default');
         $upvote.addClass('disabled');
+        document.location.reload();
       });
     }
-
-    document.location.reload();
   });
 
   $('#submit').click(function(e) {
