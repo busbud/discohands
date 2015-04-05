@@ -87,6 +87,9 @@ nav.navbar .navbar-collapse {
   color: #ddd;
   text-decoration: none;
 }
+.topic:target {
+  background: #ffffef;
+}
 
 /* Topic form */
 form.form-horizontal {
