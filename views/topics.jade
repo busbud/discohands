@@ -16,10 +16,16 @@ block content
         i.fa.fa-plus
         = ' New Topic'
   if topics.length
+    - var minimum_votes_met = false;
     each topic in topics
+      if (topic.score < minimum_votes && !minimum_votes_met)
+        - minimum_votes_met = true;
+        #splitter More votes needed
       +topic(topic)
+
     if pages > 1
       +pager('/topics', page, pages)
+      
   else
     .alert.alert-warning
       strong There's nothing here!

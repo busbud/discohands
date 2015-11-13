@@ -90,6 +90,14 @@ nav.navbar .navbar-collapse {
 .topic:target {
   background: #ffffef;
 }
+#splitter {
+  margin-bottom: 20px;
+  border-top: #127ccb solid 5px;
+  padding: 1px;
+  text-align: center;
+  color: #333;
+  text-transform: uppercase;
+}
 
 /* Topic form */
 form.form-horizontal {
