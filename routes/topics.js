@@ -3,6 +3,7 @@ var express = require('express');
 var Topic = require('../models/topic');
 
 var router = express.Router();
+var MINIMUM_VOTES = parseInt(process.env.MINIMUM_VOTES, 10);
 
 function getTopics(req, res, next) {
   var page = +req.params.page || 1;
@@ -17,7 +18,8 @@ function getTopics(req, res, next) {
     res.render('topics', {
       topics: topics,
       page: page,
-      pages: pages
+      pages: pages,
+      minimum_votes: MINIMUM_VOTES
     });
   });
 }
