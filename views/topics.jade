@@ -20,7 +20,7 @@ block content
     each topic in topics
       if (topic.score < minimum_votes && !minimum_votes_met)
         - minimum_votes_met = true;
-        #splitter More votes needed
+        #splitter More votes needed (#{minimum_votes} minimum)
       +topic(topic)
 
     if pages > 1
