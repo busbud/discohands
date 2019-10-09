@@ -37,7 +37,7 @@
     "passport-google-oauth": "^0.1.5",
     "redis": "^0.12.1",
     "superagent": "^3.7.0",
-    "snyk": "^1.47.0"
+    "snyk": "^1.232.0"
   },
   "snyk": true
 }
