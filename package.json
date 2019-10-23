@@ -31,7 +31,7 @@
     "lodash": "^4.17.5",
     "marked": "^0.7.0",
     "moment": "^2.8.1",
-    "mongoose": "^4.1.9",
+    "mongoose": "^5.7.6",
     "morgan": "^1.2.3",
     "passport": "^0.2.0",
     "passport-google-oauth": "^0.1.5",
