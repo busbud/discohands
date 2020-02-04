@@ -3,10 +3,16 @@ mixin topic_form(title, description, disabled, submit, submit_class)
     .form-group
       .col-md-8.col-md-offset-2
         input#title.form-control.input-lg(type='text', name='title', placeholder='Topic Title', value=title, disabled=disabled)
+
+        blockquote.small Your topic should be courteous/respectful to your team/colleagues.
+
     .form-group
       .col-md-8.col-md-offset-2
         textarea#description.form-control(rows='3', name='description', placeholder='Description...', disabled=disabled)
           = description
+
+        blockquote.small Add your name at the end of your question if you want to be identified.
+
     .form-group
       .col-md-8.col-md-offset-2
         button#submit.btn.btn-lg.pull-right(type='submit', class=submit_class)= submit
