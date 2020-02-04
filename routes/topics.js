@@ -1,6 +1,8 @@
 var express = require('express');
 
 var Topic = require('../models/topic');
+var TopicFilterFactory = require('../models/topic-filters');
+var topicFilter = TopicFilterFactory();
 
 var router = express.Router();
 var MINIMUM_VOTES = parseInt(process.env.MINIMUM_VOTES, 10);
@@ -9,7 +11,7 @@ function getTopics(req, res, next) {
   var page = +req.params.page || 1;
 
   Topic.getPage({
-    where: { discussed: false },
+    where: topicFilter({ discussed: false }),
     sort: '-score date',
     limit: 10,
     page: page
