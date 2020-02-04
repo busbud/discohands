@@ -20,6 +20,7 @@ Discohands is configured through environment variables, or by a
    `development`.
  - `SESSION_SECRET`: Secret key for stored sessions. Default "keyboard
    cat".
+ - `MAXIMUM_TOPIC_AGE_DAYS`: Optional number of days after which a topic is omitted. Default is no omission due to topic age.   
  - `REDIS_URL` or `REDISCLOUD_URL`: Redis connection URL. Default
    `redis://localhost:6379`.
  - `MONGODB_URI` or `MONGOLAB_URI`: MongoDB connection URI. Default
