@@ -52,7 +52,7 @@ redirect URI in Google Developers Console.
 
 Discohands can easily be deployed to [Heroku](http://heroku.com) with
 [Redis Cloud](https://addons.heroku.com/rediscloud) and
-[MongoLab](https://addons.heroku.com/mongolab).
+[MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
 
 ## License
 
