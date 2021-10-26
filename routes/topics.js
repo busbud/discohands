@@ -13,7 +13,7 @@ function getTopics(req, res, next) {
   Topic.getPage({
     where: topicFilter({ discussed: false }),
     sort: '-score date',
-    limit: 10,
+    limit: 20,
     page: page
   }, function(err, topics, pages) {
     if (err) return next(err);
