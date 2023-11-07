@@ -19,7 +19,7 @@ block body
 
         ul.nav.navbar-nav.navbar-right
           li(class=(page_active === 'mine' ? 'active' : ''))
-            a(href='/mine', title=user.email)= user.display_name
+            a(href='/mine', title=user.email)= (user.display_name || user.email || 'My Topics')
           li
             a(href='/auth/logout', title='Sign out')
               i.fa.fa-sign-out
